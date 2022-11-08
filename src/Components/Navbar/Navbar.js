@@ -11,7 +11,11 @@ const Navbar = () => {
 				<NavLink
 					to="home"
 					title="Home"
-					class="font-medium tracking-wide text-white transition-colors duration-200 hover:text-teal-accent-400"
+					className={({ isActive }) =>
+						isActive
+							? 'font-medium tracking-wide transition-colors duration-200 text-teal-400'
+							: 'font-medium tracking-wide text-white transition-colors duration-200 hover:text-teal-400'
+					}
 				>
 					Home
 				</NavLink>
@@ -20,7 +24,11 @@ const Navbar = () => {
 				<NavLink
 					to="login"
 					title="Login"
-					class="font-medium tracking-wide text-white transition-colors duration-200 hover:text-teal-accent-400"
+					className={({ isActive }) =>
+						isActive
+							? 'font-medium tracking-wide transition-colors duration-200 text-teal-400'
+							: 'font-medium tracking-wide text-white transition-colors duration-200 hover:text-teal-400'
+					}
 				>
 					Login
 				</NavLink>
@@ -29,7 +37,11 @@ const Navbar = () => {
 				<NavLink
 					to="register"
 					title="Sign Up"
-					class="font-medium tracking-wide text-white transition-colors duration-200 hover:text-teal-accent-400"
+					className={({ isActive }) =>
+						isActive
+							? 'font-medium tracking-wide transition-colors duration-200 text-teal-400'
+							: 'font-medium tracking-wide text-white transition-colors duration-200 hover:text-teal-400'
+					}
 				>
 					Sign Up
 				</NavLink>
@@ -38,27 +50,30 @@ const Navbar = () => {
 	);
 
 	return (
-		<div class="bg-gray-900">
-			<div class="px-4 py-5 mx-auto sm:max-w-xl md:max-w-full md:px-8 lg:px-12">
-				<div class="relative flex items-center justify-between">
+		<div className="bg-gray-900">
+			<div className="px-4 py-5 mx-auto sm:max-w-xl md:max-w-full md:px-8 lg:px-12">
+				<div className="relative flex items-center justify-between">
 					<Link
 						to="/"
 						title="Flawless Visa"
-						class="inline-flex items-center"
+						className="inline-flex items-center"
 					>
 						<img src={navbarLogo} alt="" />
 					</Link>
-					<ul class="flex items-center hidden space-x-8 lg:flex">
+					<ul className="flex items-center hidden space-x-8 lg:flex">
 						{navItems}
 					</ul>
-					<div class="lg:hidden">
+					<div className="lg:hidden">
 						<button
 							aria-label="Open Menu"
 							title="Open Menu"
-							class="p-2 -mr-1 transition duration-200 rounded focus:outline-none focus:shadow-outline"
+							className="p-2 -mr-1 transition duration-200 rounded focus:outline-none focus:shadow-outline"
 							onClick={() => setIsMenuOpen(true)}
 						>
-							<svg class="w-5 text-gray-600" viewBox="0 0 24 24">
+							<svg
+								className="w-5 text-gray-600"
+								viewBox="0 0 24 24"
+							>
 								<path
 									fill="currentColor"
 									d="M23,13H1c-0.6,0-1-0.4-1-1s0.4-1,1-1h22c0.6,0,1,0.4,1,1S23.6,13,23,13z"
@@ -74,18 +89,18 @@ const Navbar = () => {
 							</svg>
 						</button>
 						{isMenuOpen && (
-							<div class="absolute top-0 left-0 w-full">
-								<div class="p-5 bg-white border rounded shadow-sm">
-									<div class="flex items-center justify-between mb-4">
+							<div className="absolute top-0 left-0 w-full">
+								<div className="p-5 bg-white border rounded shadow-sm">
+									<div className="flex items-center justify-between mb-4">
 										<div>
 											<a
 												href="/"
 												aria-label="Company"
 												title="Company"
-												class="inline-flex items-center"
+												className="inline-flex items-center"
 											>
 												<svg
-													class="w-8 text-deep-purple-accent-400"
+													className="w-8 text-deep-purple-accent-400"
 													viewBox="0 0 24 24"
 													strokeLinejoin="round"
 													strokeWidth="2"
@@ -119,7 +134,7 @@ const Navbar = () => {
 														height="12"
 													/>
 												</svg>
-												<span class="ml-2 text-xl font-bold tracking-wide text-gray-800 uppercase">
+												<span className="ml-2 text-xl font-bold tracking-wide text-gray-800 uppercase">
 													Company
 												</span>
 											</a>
@@ -128,13 +143,13 @@ const Navbar = () => {
 											<button
 												aria-label="Close Menu"
 												title="Close Menu"
-												class="p-2 -mt-2 -mr-2 transition duration-200 rounded hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
+												className="p-2 -mt-2 -mr-2 transition duration-200 rounded hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
 												onClick={() =>
 													setIsMenuOpen(false)
 												}
 											>
 												<svg
-													class="w-5 text-gray-600"
+													className="w-5 text-gray-600"
 													viewBox="0 0 24 24"
 												>
 													<path
@@ -146,7 +161,9 @@ const Navbar = () => {
 										</div>
 									</div>
 									<nav>
-										<ul class="space-y-4">{navItems}</ul>
+										<ul className="space-y-4">
+											{navItems}
+										</ul>
 									</nav>
 								</div>
 							</div>
