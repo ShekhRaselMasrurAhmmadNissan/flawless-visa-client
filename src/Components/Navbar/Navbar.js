@@ -11,7 +11,7 @@ const Navbar = () => {
 				<NavLink
 					to="home"
 					title="Home"
-					class="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400"
+					class="font-medium tracking-wide text-white transition-colors duration-200 hover:text-teal-accent-400"
 				>
 					Home
 				</NavLink>
@@ -20,7 +20,7 @@ const Navbar = () => {
 				<NavLink
 					to="login"
 					title="Login"
-					class="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400"
+					class="font-medium tracking-wide text-white transition-colors duration-200 hover:text-teal-accent-400"
 				>
 					Login
 				</NavLink>
@@ -29,7 +29,7 @@ const Navbar = () => {
 				<NavLink
 					to="register"
 					title="Sign Up"
-					class="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400"
+					class="font-medium tracking-wide text-white transition-colors duration-200 hover:text-teal-accent-400"
 				>
 					Sign Up
 				</NavLink>
@@ -39,7 +39,7 @@ const Navbar = () => {
 
 	return (
 		<div class="bg-gray-900">
-			<div class="px-4 py-5 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
+			<div class="px-4 py-5 mx-auto sm:max-w-xl md:max-w-full md:px-8 lg:px-12">
 				<div class="relative flex items-center justify-between">
 					<Link
 						to="/"
