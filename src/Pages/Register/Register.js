@@ -1,13 +1,24 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import SocialLogin from '../../Components/SocialLogin/SocialLogin';
+import { AuthContext } from '../../Contexts/AuthProvider/AuthProvider';
 
 const Register = () => {
+	const { emailRegister } = useContext(AuthContext);
 	const { register, handleSubmit } = useForm();
+	const navigate = useNavigate();
 
 	const handleRegister = async (data) => {
 		console.log(data);
+		try {
+			const response = await emailRegister(data.email, data.password);
+			const user = response.user;
+			console.log(user);
+			navigate('/home');
+		} catch (error) {
+			console.error(error);
+		}
 	};
 	return (
 		<div className="w-full max-w-md p-8 space-y-3 rounded-xl bg-gray-200 mt-8 md:mx-auto text-gray-800">
