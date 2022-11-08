@@ -1,9 +1,20 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import navbarLogo from '../../Assets/Navbar-Logo.png';
+import { AuthContext } from '../../Contexts/AuthProvider/AuthProvider';
 
 const Navbar = () => {
+	const { user, logout } = useContext(AuthContext);
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+	const handleLogout = async () => {
+		try {
+			const response = await logout();
+			alert('Logout Successful.');
+		} catch (error) {
+			console.error(error);
+		}
+	};
 
 	const navItems = (
 		<>
@@ -22,30 +33,87 @@ const Navbar = () => {
 			</li>
 			<li>
 				<NavLink
-					to="login"
-					title="Login"
+					to="services"
+					title="Services"
 					className={({ isActive }) =>
 						isActive
 							? 'font-medium tracking-wide transition-colors duration-200 text-teal-400'
 							: 'font-medium tracking-wide text-white transition-colors duration-200 hover:text-teal-400'
 					}
 				>
-					Login
+					Services
 				</NavLink>
 			</li>
-			<li>
-				<NavLink
-					to="register"
-					title="Sign Up"
-					className={({ isActive }) =>
-						isActive
-							? 'font-medium tracking-wide transition-colors duration-200 text-teal-400'
-							: 'font-medium tracking-wide text-white transition-colors duration-200 hover:text-teal-400'
-					}
-				>
-					Sign Up
-				</NavLink>
-			</li>
+			{user ? (
+				<>
+					<li>
+						<NavLink
+							to="addService"
+							title="Add A Service"
+							className={({ isActive }) =>
+								isActive
+									? 'font-medium tracking-wide transition-colors duration-200 text-teal-400'
+									: 'font-medium tracking-wide text-white transition-colors duration-200 hover:text-teal-400'
+							}
+						>
+							Add Service
+						</NavLink>
+					</li>
+
+					<li>
+						<NavLink
+							to="myReviews"
+							title="My Reviews"
+							className={({ isActive }) =>
+								isActive
+									? 'font-medium tracking-wide transition-colors duration-200 text-teal-400'
+									: 'font-medium tracking-wide text-white transition-colors duration-200 hover:text-teal-400'
+							}
+						>
+							My Reviews
+						</NavLink>
+					</li>
+
+					<li>
+						<button
+							title="Logout"
+							className="font-medium tracking-wide text-white transition-colors duration-200 hover:text-teal-400"
+							onClick={handleLogout}
+						>
+							Logout
+						</button>
+					</li>
+				</>
+			) : (
+				<>
+					<li>
+						<NavLink
+							to="login"
+							title="Login"
+							className={({ isActive }) =>
+								isActive
+									? 'font-medium tracking-wide transition-colors duration-200 text-teal-400'
+									: 'font-medium tracking-wide text-white transition-colors duration-200 hover:text-teal-400'
+							}
+						>
+							Login
+						</NavLink>
+					</li>
+					<li>
+						<NavLink
+							to="register"
+							title="Sign Up"
+							className={({ isActive }) =>
+								isActive
+									? 'font-medium tracking-wide transition-colors duration-200 text-teal-400'
+									: 'font-medium tracking-wide text-white transition-colors duration-200 hover:text-teal-400'
+							}
+						>
+							Sign Up
+						</NavLink>
+					</li>
+				</>
+			)}
 		</>
 	);
 
