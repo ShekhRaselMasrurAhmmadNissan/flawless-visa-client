@@ -1,6 +1,24 @@
-import React from 'react';
+import { GoogleAuthProvider } from 'firebase/auth';
+import React, { useContext } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../Contexts/AuthProvider/AuthProvider';
 
 const SocialLogin = () => {
+	const { providerSignIn } = useContext(AuthContext);
+	const location = useLocation();
+	const navigate = useNavigate();
+	const from = location.state?.from?.pathname || '/home';
+	const googleProvider = new GoogleAuthProvider();
+
+	const handleGoogleSignIn = async () => {
+		try {
+			const response = await providerSignIn(googleProvider);
+			console.log(response.user);
+			navigate(from, { replace: true });
+		} catch (error) {
+			console.error(error);
+		}
+	};
 	return (
 		<>
 			<div className="flex items-center pt-4 space-x-1">
@@ -15,6 +33,7 @@ const SocialLogin = () => {
 					aria-label="Login with Google"
 					type="button"
 					className="flex items-center justify-center w-full p-4 space-x-4 rounded-md focus:ring-2 focus:ring-offset-1 border-gray-600 focus:ring-blue-600 bg-blue-600 text-white hover:bg-blue-700 outline-none"
+					onClick={handleGoogleSignIn}
 				>
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
