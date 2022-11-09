@@ -2,6 +2,8 @@ import axios from 'axios';
 import React, { useContext, useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { FaUserLock } from 'react-icons/fa';
+import { PhotoProvider, PhotoView } from 'react-photo-view';
+import 'react-photo-view/dist/react-photo-view.css';
 import { Link, useLoaderData } from 'react-router-dom';
 import SingleReview from '../../Components/SingleReview/SingleReview';
 import { AuthContext } from '../../Contexts/AuthProvider/AuthProvider';
@@ -62,11 +64,15 @@ const ServiceInformation = () => {
 				<div className="w-full p-4 shadow-md bg-gray-50 text-gray-800">
 					<div className="space-y-4">
 						<div className="space-y-2">
-							<img
-								src={image}
-								alt=""
-								className="block object-cover object-center w-full rounded-md h-96 bg-gray-500"
-							/>
+							<PhotoProvider>
+								<PhotoView src={image}>
+									<img
+										src={image}
+										alt=""
+										className="block object-cover object-center w-full rounded-md h-96 bg-gray-500"
+									/>
+								</PhotoView>
+							</PhotoProvider>
 						</div>
 						<div className="space-y-2">
 							<h3 className="text-xl font-semibold text-blue-600">
