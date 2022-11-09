@@ -93,7 +93,7 @@ const ServiceInformation = () => {
 					<div className="flex items-center justify-center text-lg text-red-500 bg-yellow-200 py-2 rounded-full">
 						<FaUserLock />
 						<p className="ml-3">
-							Please Login to Comment.{' '}
+							Please Login to Give Review.{' '}
 							<Link
 								to="/login"
 								className="text-blue-600 animate-pulse"
