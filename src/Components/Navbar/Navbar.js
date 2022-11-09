@@ -1,4 +1,5 @@
 import React, { useContext, useState } from 'react';
+import { FaUserAlt } from 'react-icons/fa';
 import { Link, NavLink } from 'react-router-dom';
 import navbarLogo from '../../Assets/Navbar-Logo.png';
 import { AuthContext } from '../../Contexts/AuthProvider/AuthProvider';
@@ -82,6 +83,21 @@ const Navbar = () => {
 						>
 							Logout
 						</button>
+					</li>
+					<li>
+						{user?.photoURL ? (
+							<img
+								src={user?.photoURL}
+								alt=""
+								title={user?.displayName}
+								className="h-12 w-12 object-center rounded-full"
+							/>
+						) : (
+							<FaUserAlt
+								title={user?.displayName}
+								className="h-12 w-12 rounded-full object-center"
+							/>
+						)}
 					</li>
 				</>
 			) : (
