@@ -1,10 +1,11 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
 import SocialLogin from '../../Components/SocialLogin/SocialLogin';
 import { AuthContext } from '../../Contexts/AuthProvider/AuthProvider';
 
 const Register = () => {
+	const [error, setError] = useState('');
 	const { emailRegister, userUpdate } = useContext(AuthContext);
 	const { register, handleSubmit } = useForm();
 	const navigate = useNavigate();
@@ -23,6 +24,7 @@ const Register = () => {
 			navigate('/home');
 		} catch (error) {
 			console.error(error);
+			setError(error.message);
 		}
 	};
 	return (
@@ -45,6 +47,7 @@ const Register = () => {
 						id="userName"
 						placeholder="User Name"
 						className="w-full px-4 py-3 rounded-md border-gray-300 bg-gray-50 text-gray-800 outline-none"
+						required
 					/>
 				</div>
 				<div className="space-y-1 text-sm">
@@ -57,6 +60,7 @@ const Register = () => {
 						id="photoURL"
 						placeholder="Photo URL"
 						className="w-full px-4 py-3 rounded-md border-gray-300 bg-gray-50 text-gray-800 outline-none"
+						required
 					/>
 				</div>
 				<div className="space-y-1 text-sm">
@@ -69,6 +73,7 @@ const Register = () => {
 						id="email"
 						placeholder="Email"
 						className="w-full px-4 py-3 rounded-md border-gray-300 bg-gray-50 text-gray-800 outline-none"
+						required
 					/>
 				</div>
 				<div className="space-y-1 text-sm">
@@ -81,8 +86,12 @@ const Register = () => {
 						id="password"
 						placeholder="Password"
 						className="w-full px-4 py-3 rounded-md border-gray-300 bg-gray-50 text-gray-800 outline-none"
+						required
 					/>
 				</div>
+				{error && (
+					<p className="text-md font-medium text-red-500">{error}</p>
+				)}
 				<button
 					type="submit"
 					className="block w-full p-3 text-center text-lg text-gray-50 bg-blue-600 rounded-lg"
