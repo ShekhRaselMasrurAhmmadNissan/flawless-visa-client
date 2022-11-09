@@ -3,6 +3,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { FaUserLock } from 'react-icons/fa';
 import { Link, useLoaderData } from 'react-router-dom';
+import SingleReview from '../../Components/SingleReview/SingleReview';
 import { AuthContext } from '../../Contexts/AuthProvider/AuthProvider';
 
 const ServiceInformation = () => {
@@ -125,6 +126,11 @@ const ServiceInformation = () => {
 						</form>
 					</div>
 				)}
+				<div className="mt-4">
+					{reviews.map((review) => (
+						<SingleReview key={review._id} review={review} />
+					))}
+				</div>
 			</div>
 		</div>
 	);
