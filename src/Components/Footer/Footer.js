@@ -1,7 +1,6 @@
 import React from 'react';
 import { FaGithub } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
-import navbarLogo from '../../Assets/Navbar-Logo.png';
 
 const Footer = () => {
 	return (
