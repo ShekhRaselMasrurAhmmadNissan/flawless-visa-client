@@ -1,13 +1,59 @@
-import React, { useContext } from 'react';
+import axios from 'axios';
+import React, { useContext, useEffect, useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { FaUserLock } from 'react-icons/fa';
 import { Link, useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../../Contexts/AuthProvider/AuthProvider';
-import { FaUserLock } from 'react-icons/fa';
 
 const ServiceInformation = () => {
+	const [reviews, setReviews] = useState([]);
+	const [hasUpdate, setHasUpdate] = useState(true);
 	const { user } = useContext(AuthContext);
 	const service = useLoaderData();
-	console.log(service);
+	const { register, handleSubmit, reset } = useForm();
+	// console.log(service);
+	// console.log(user);
 	const { _id, title, image, price, description } = service;
+
+	useEffect(() => {
+		try {
+			const loadReviewsByService = async () => {
+				const response = await axios.get(
+					`http://localhost:5000/servicesReview/${_id}`
+				);
+				// console.log(response);
+				setReviews(response.data);
+			};
+			loadReviewsByService();
+		} catch (error) {
+			console.error(error);
+		}
+	}, [hasUpdate, _id]);
+	console.log(reviews);
+
+	const handleAddReview = async (data) => {
+		console.log(data);
+		try {
+			const reviewDetails = {
+				message: data.review,
+				serviceName: title,
+				userEmail: user.email,
+				userName: user.displayName,
+				userPhoto: user.photoURL,
+				createdAt: new Date(),
+			};
+			const response = await axios.post(
+				`http://localhost:5000/reviews/${_id}`,
+				reviewDetails
+			);
+			console.log(response);
+			reset();
+			setHasUpdate(!hasUpdate);
+			alert('Added Review.');
+		} catch (error) {
+			console.error(error);
+		}
+	};
 
 	return (
 		<div className="grid grid-cols-1 lg:grid-cols-2 mt-8 lg:gap-x-4">
@@ -51,7 +97,33 @@ const ServiceInformation = () => {
 						</p>
 					</div>
 				) : (
-					<></>
+					<div>
+						<form
+							action=""
+							onSubmit={handleSubmit(handleAddReview)}
+						>
+							<label
+								htmlFor="review"
+								className="text-lg font-medium"
+							>
+								Review
+							</label>
+							<textarea
+								id="review"
+								{...register('review')}
+								placeholder="Please write your review here..."
+								className="w-full rounded-md outline-none p-2 border-2 border-blue-600 focus:border-green-500 text-black text-lg"
+							></textarea>
+							<div className="text-center">
+								<button
+									type="submit"
+									className="w-full md:w-1/4 px-8 py-3 font-semibold rounded-md bg-blue-600 text-gray-50"
+								>
+									Submit Review
+								</button>
+							</div>
+						</form>
+					</div>
 				)}
 			</div>
 		</div>
