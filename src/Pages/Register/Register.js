@@ -5,15 +5,20 @@ import SocialLogin from '../../Components/SocialLogin/SocialLogin';
 import { AuthContext } from '../../Contexts/AuthProvider/AuthProvider';
 
 const Register = () => {
-	const { emailRegister } = useContext(AuthContext);
+	const { emailRegister, userUpdate } = useContext(AuthContext);
 	const { register, handleSubmit } = useForm();
 	const navigate = useNavigate();
 
 	const handleRegister = async (data) => {
 		console.log(data);
+		const updatedUser = {
+			displayName: data.userName,
+			photoURL: data.photoURL,
+		};
 		try {
 			const response = await emailRegister(data.email, data.password);
 			const user = response.user;
+			const updateHandle = userUpdate(updatedUser);
 			console.log(user);
 			navigate('/home');
 		} catch (error) {
