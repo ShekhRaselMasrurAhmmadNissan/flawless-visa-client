@@ -18,6 +18,9 @@ const SingleService = ({ service }) => {
 						<h3 className="text-xl font-semibold text-blue-600">
 							{title}
 						</h3>
+						<p className="text-orange-500 text-lg font-medium">
+							Price: ${price}
+						</p>
 						<p className="leading-snug text-gray-600">
 							{description.length > 100
 								? description.slice(0, 97) + '...'
