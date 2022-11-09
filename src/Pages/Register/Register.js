@@ -18,7 +18,7 @@ const Register = () => {
 		try {
 			const response = await emailRegister(data.email, data.password);
 			const user = response.user;
-			const updateHandle = userUpdate(updatedUser);
+			const updateHandle = await userUpdate(updatedUser);
 			console.log(user);
 			navigate('/home');
 		} catch (error) {
