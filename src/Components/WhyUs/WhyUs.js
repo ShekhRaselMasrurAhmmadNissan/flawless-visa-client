@@ -32,8 +32,8 @@ const WhyUs = () => {
 					<p>
 						I have been working form approximately 5 years on Visa
 						processing. To meet me, visit{' '}
-						<address>Mirpur-10, Dhaka</address>
 					</p>
+					<address>Mirpur-10, Dhaka</address>
 				</div>
 			</div>
 		</div>
