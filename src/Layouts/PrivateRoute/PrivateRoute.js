@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { Navigate, useLocation } from 'react-router-dom';
-import { CircleLoader } from 'react-spinners';
+import Spinner from '../../Components/Spinner/Spinner';
 import { AuthContext } from '../../Contexts/AuthProvider/AuthProvider';
 
 const PrivateRoute = ({ children }) => {
@@ -9,13 +9,7 @@ const PrivateRoute = ({ children }) => {
 	const location = useLocation();
 
 	if (loading) {
-		return (
-			<CircleLoader
-				color="#0cc5a0"
-				size={100}
-				className="mx-auto lg:mt-40"
-			/>
-		);
+		return <Spinner />;
 	}
 
 	if (!user) {
