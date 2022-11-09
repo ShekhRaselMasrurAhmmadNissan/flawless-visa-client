@@ -5,6 +5,7 @@ import {
 	onAuthStateChanged,
 	signInWithEmailAndPassword,
 	signOut,
+	updateCurrentUser,
 } from 'firebase/auth';
 import app from '../../Firebase/Firebase.config';
 
@@ -17,6 +18,10 @@ const AuthProvider = ({ children }) => {
 
 	const emailRegister = (email, password) => {
 		return createUserWithEmailAndPassword(auth, email, password);
+	};
+
+	const userUpdate = (user) => {
+		return updateCurrentUser;
 	};
 
 	const login = (email, password) => {
