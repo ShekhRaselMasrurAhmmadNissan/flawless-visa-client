@@ -17,18 +17,22 @@ const AuthProvider = ({ children }) => {
 	const [loading, setLoading] = useState(true);
 
 	const emailRegister = (email, password) => {
+		setLoading(true);
 		return createUserWithEmailAndPassword(auth, email, password);
 	};
 
 	const userUpdate = (userInformation) => {
+		setLoading(true);
 		return updateProfile(auth.currentUser, userInformation);
 	};
 
 	const login = (email, password) => {
+		setLoading(true);
 		return signInWithEmailAndPassword(auth, email, password);
 	};
 
 	const logout = () => {
+		setLoading(true);
 		return signOut(auth);
 	};
 
@@ -45,6 +49,7 @@ const AuthProvider = ({ children }) => {
 	const authInfo = {
 		user,
 		loading,
+		setLoading,
 		emailRegister,
 		userUpdate,
 		login,
