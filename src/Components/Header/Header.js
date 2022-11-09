@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import banner from '../../Assets/Hero.jpg';
 
 const Header = () => {
@@ -35,19 +36,12 @@ const Header = () => {
 						successfully apply and get approved.
 					</p>
 					<div className="flex items-center">
-						<a
-							href="/"
+						<Link
+							to="/services"
 							className="inline-flex items-center justify-center h-12 px-6 mr-6 border border-blue-700 font-medium tracking-wide text-black transition duration-500 rounded shadow-md bg-deep-purple-accent-400 hover:bg-purple-700 hover:text-white focus:shadow-outline focus:outline-none"
 						>
 							See Services
-						</a>
-						<a
-							href="/"
-							aria-label=""
-							className="inline-flex items-center font-semibold text-gray-800 transition-colors duration-200 hover:text-deep-purple-accent-700"
-						>
-							Learn more
-						</a>
+						</Link>
 					</div>
 				</div>
 			</div>
