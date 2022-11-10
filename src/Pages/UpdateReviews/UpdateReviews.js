@@ -28,9 +28,6 @@ const UpdateReviews = () => {
 					},
 				}
 			);
-			if (response.status === 401 || response.status === 403) {
-				return logout.then().catch((error) => console.error(error));
-			}
 			console.log(response);
 			if (response.data.modifiedCount > 0) {
 				alert('Data Updated Successfully.');
@@ -38,6 +35,7 @@ const UpdateReviews = () => {
 			}
 		} catch (error) {
 			console.error(error);
+			return logout.then().catch((error) => console.error(error));
 		}
 	};
 

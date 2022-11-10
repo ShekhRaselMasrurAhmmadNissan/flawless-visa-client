@@ -23,9 +23,6 @@ const SinglePersonalReview = ({ review, hasUpdate, setHasUpdate }) => {
 						},
 					}
 				);
-				if (response.status === 401 || response.status === 403) {
-					return logout.then().catch((error) => console.error(error));
-				}
 				if (response.data.deletedCount > 0) {
 					alert('Deleted Successfully.');
 					setHasUpdate(!hasUpdate);
@@ -33,6 +30,7 @@ const SinglePersonalReview = ({ review, hasUpdate, setHasUpdate }) => {
 			}
 		} catch (error) {
 			console.error(error);
+			return logout.then().catch((error) => console.error(error));
 		}
 	};
 	return (

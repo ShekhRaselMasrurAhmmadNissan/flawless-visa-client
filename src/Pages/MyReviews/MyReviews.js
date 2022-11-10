@@ -23,13 +23,12 @@ const MyReviews = () => {
 						},
 					}
 				);
-				if (response.status === 401 || response.status === 403) {
-					return logout.then().catch((error) => console.error(error));
-				}
 				setReviews(response.data);
-				console.log(response.data);
 			} catch (error) {
 				console.error(error);
+				return logout()
+					.then()
+					.catch((error) => console.error(error));
 			}
 		};
 		loadReviews();
