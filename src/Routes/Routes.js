@@ -5,6 +5,7 @@ import AddService from '../Pages/AddService/AddService';
 import Error from '../Pages/Error/Error';
 import Home from '../Pages/Home/Home';
 import Login from '../Pages/Login/Login';
+import MyReviews from '../Pages/MyReviews/MyReviews';
 import Register from '../Pages/Register/Register';
 import ServiceInformation from '../Pages/ServiceInformation/ServiceInformation';
 import Services from '../Pages/Services/Services';
@@ -38,6 +39,14 @@ const router = createBrowserRouter([
 				element: (
 					<PrivateRoute>
 						<AddService />
+					</PrivateRoute>
+				),
+			},
+			{
+				path: 'myReviews',
+				element: (
+					<PrivateRoute>
+						<MyReviews />
 					</PrivateRoute>
 				),
 			},
