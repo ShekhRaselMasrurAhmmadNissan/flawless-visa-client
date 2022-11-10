@@ -9,9 +9,11 @@ import MyReviews from '../Pages/MyReviews/MyReviews';
 import Register from '../Pages/Register/Register';
 import ServiceInformation from '../Pages/ServiceInformation/ServiceInformation';
 import Services from '../Pages/Services/Services';
+import UpdateReviews from '../Pages/UpdateReviews/UpdateReviews';
 import {
 	getSingleServiceInformation,
 	loadAllServices,
+	loadSingleReviewForUpdate,
 } from '../Utilities/Loaders/Loaders';
 
 const router = createBrowserRouter([
@@ -49,6 +51,15 @@ const router = createBrowserRouter([
 						<MyReviews />
 					</PrivateRoute>
 				),
+			},
+			{
+				path: 'updateReview/:id',
+				element: (
+					<PrivateRoute>
+						<UpdateReviews />
+					</PrivateRoute>
+				),
+				loader: ({ params }) => loadSingleReviewForUpdate(params.id),
 			},
 		],
 	},

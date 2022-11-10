@@ -1,8 +1,11 @@
 import axios from 'axios';
-import React from 'react';
+import React, { useContext } from 'react';
 import { FaEdit, FaTrash } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
+import { AuthContext } from '../../Contexts/AuthProvider/AuthProvider';
 
 const SinglePersonalReview = ({ review, hasUpdate, setHasUpdate }) => {
+	const { logout } = useContext(AuthContext);
 	const { _id, serviceName, message } = review;
 	const handleDelete = async () => {
 		try {
@@ -20,6 +23,9 @@ const SinglePersonalReview = ({ review, hasUpdate, setHasUpdate }) => {
 						},
 					}
 				);
+				if (response.status === 401 || response.status === 403) {
+					return logout.then().catch((error) => console.error(error));
+				}
 				if (response.data.deletedCount > 0) {
 					alert('Deleted Successfully.');
 					setHasUpdate(!hasUpdate);
@@ -38,9 +44,12 @@ const SinglePersonalReview = ({ review, hasUpdate, setHasUpdate }) => {
 				<p className="text-lg font-medium">{message}</p>
 			</div>
 			<div className="md:col-span-2 md:pl-4 md:flex md:items-center">
-				<button className="text-white px-3 py-2 bg-purple-500 rounded-full text-2xl">
+				<Link
+					to={`/updateReview/${_id}`}
+					className="text-white px-3 py-2 bg-purple-500 rounded-full text-2xl"
+				>
 					<FaEdit />
-				</button>
+				</Link>
 				<button
 					className="text-white px-3 py-2 bg-red-600 rounded-full text-2xl ml-6"
 					onClick={handleDelete}
