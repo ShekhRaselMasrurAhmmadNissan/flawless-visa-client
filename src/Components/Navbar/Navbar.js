@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { FaUserAlt } from 'react-icons/fa';
 import { Link, NavLink } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import navbarLogo from '../../Assets/Navbar-Logo.png';
 import { AuthContext } from '../../Contexts/AuthProvider/AuthProvider';
 
@@ -11,7 +12,7 @@ const Navbar = () => {
 	const handleLogout = async () => {
 		try {
 			const response = await logout();
-			alert('Logout Successful.');
+			toast.success('Logout Successful.');
 		} catch (error) {
 			console.error(error);
 		}

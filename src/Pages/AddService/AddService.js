@@ -1,10 +1,11 @@
 import axios from 'axios';
 import React from 'react';
 import { useForm } from 'react-hook-form';
+import { toast } from 'react-toastify';
 import useTitle from '../../Hooks/useTitle/useTitle';
 
 const AddService = () => {
-	useTitle('Add Service')
+	useTitle('Add Service');
 	const { register, handleSubmit, reset } = useForm();
 
 	const handleAddService = async (data) => {
@@ -21,7 +22,7 @@ const AddService = () => {
 			service
 		);
 		if (response.data.acknowledged) {
-			alert('Service Added Successfully.');
+			toast.success('Service Added Successfully.');
 		}
 		reset();
 	};

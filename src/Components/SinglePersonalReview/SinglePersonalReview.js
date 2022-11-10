@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useContext } from 'react';
 import { FaEdit, FaTrash } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import { AuthContext } from '../../Contexts/AuthProvider/AuthProvider';
 
 const SinglePersonalReview = ({ review, hasUpdate, setHasUpdate }) => {
@@ -24,7 +25,7 @@ const SinglePersonalReview = ({ review, hasUpdate, setHasUpdate }) => {
 					}
 				);
 				if (response.data.deletedCount > 0) {
-					alert('Deleted Successfully.');
+					toast.success('Deleted Successfully.');
 					setHasUpdate(!hasUpdate);
 				}
 			}

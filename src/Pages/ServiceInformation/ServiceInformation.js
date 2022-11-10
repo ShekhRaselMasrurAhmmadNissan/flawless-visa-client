@@ -5,6 +5,7 @@ import { FaUserLock } from 'react-icons/fa';
 import { PhotoProvider, PhotoView } from 'react-photo-view';
 import 'react-photo-view/dist/react-photo-view.css';
 import { Link, useLoaderData } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import SingleReview from '../../Components/SingleReview/SingleReview';
 import { AuthContext } from '../../Contexts/AuthProvider/AuthProvider';
 import useTitle from '../../Hooks/useTitle/useTitle';
@@ -55,7 +56,7 @@ const ServiceInformation = () => {
 			console.log(response);
 			reset();
 			setHasUpdate(!hasUpdate);
-			alert('Added Review.');
+			toast.success('Added Review Successfully.');
 		} catch (error) {
 			console.error(error);
 		}

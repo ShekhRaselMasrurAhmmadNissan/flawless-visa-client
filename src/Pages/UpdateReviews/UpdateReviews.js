@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import { useLoaderData, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import { AuthContext } from '../../Contexts/AuthProvider/AuthProvider';
 import useTitle from '../../Hooks/useTitle/useTitle';
 
@@ -30,7 +31,7 @@ const UpdateReviews = () => {
 			);
 			console.log(response);
 			if (response.data.modifiedCount > 0) {
-				alert('Data Updated Successfully.');
+				toast.success('Data Updated Successfully.');
 				navigate('/myReviews');
 			}
 		} catch (error) {
