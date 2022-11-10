@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useContext, useEffect, useState } from 'react';
+import { toast } from 'react-toastify';
 import SinglePersonalReview from '../../Components/SinglePersonalReview/SinglePersonalReview';
 import { AuthContext } from '../../Contexts/AuthProvider/AuthProvider';
 import useTitle from '../../Hooks/useTitle/useTitle';
@@ -26,6 +27,7 @@ const MyReviews = () => {
 				setReviews(response.data);
 			} catch (error) {
 				console.error(error);
+				toast.error('Unauthorized Access.');
 				return logout()
 					.then()
 					.catch((error) => console.error(error));
@@ -44,7 +46,7 @@ const MyReviews = () => {
 					<>
 						<div className="text-center">
 							<p className="text-xl md:text-4xl font-bold text-yellow-300 bg-blue-400 px-6 py-4 rounded-xl">
-								No Review to display.
+								No reviews were added.
 							</p>
 						</div>
 					</>

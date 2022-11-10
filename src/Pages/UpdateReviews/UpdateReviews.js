@@ -36,7 +36,10 @@ const UpdateReviews = () => {
 			}
 		} catch (error) {
 			console.error(error);
-			return logout.then().catch((error) => console.error(error));
+			toast.error('Unauthorized Access.');
+			return logout()
+				.then()
+				.catch((error) => console.error(error));
 		}
 	};
 
