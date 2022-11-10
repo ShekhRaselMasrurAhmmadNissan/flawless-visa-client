@@ -15,7 +15,7 @@ const SinglePersonalReview = ({ review, hasUpdate, setHasUpdate }) => {
 			);
 			if (decision) {
 				const response = await axios.delete(
-					`http://localhost:5000/reviews/${_id}`,
+					`https://flawless-visa-server.vercel.app/reviews/${_id}`,
 					{
 						headers: {
 							authorization: `Bearer ${localStorage.getItem(

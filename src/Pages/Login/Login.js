@@ -7,8 +7,8 @@ import { AuthContext } from '../../Contexts/AuthProvider/AuthProvider';
 import useTitle from '../../Hooks/useTitle/useTitle';
 
 const Login = () => {
-	useTitle('Login')
-	
+	useTitle('Login');
+
 	const [error, setError] = useState('');
 	const { login } = useContext(AuthContext);
 	const { register, handleSubmit } = useForm();
@@ -23,7 +23,7 @@ const Login = () => {
 			console.log(response.user);
 			const currentUser = { email: response.user.email };
 			const tokenResponse = await axios.post(
-				`http://localhost:5000/jwt`,
+				`https://flawless-visa-server.vercel.app/jwt`,
 				currentUser
 			);
 			console.log(tokenResponse.data);

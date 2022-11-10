@@ -18,7 +18,7 @@ const AddService = () => {
 		};
 
 		const response = await axios.post(
-			`http://localhost:5000/services`,
+			`https://flawless-visa-server.vercel.app/services`,
 			service
 		);
 		if (response.data.acknowledged) {

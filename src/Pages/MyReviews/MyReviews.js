@@ -17,7 +17,7 @@ const MyReviews = () => {
 		const loadReviews = async () => {
 			try {
 				const response = await axios.get(
-					`http://localhost:5000/userReviews?email=${user?.email}`,
+					`https://flawless-visa-server.vercel.app/userReviews?email=${user?.email}`,
 					{
 						headers: {
 							authorization: `Bearer ${localStorage.getItem(

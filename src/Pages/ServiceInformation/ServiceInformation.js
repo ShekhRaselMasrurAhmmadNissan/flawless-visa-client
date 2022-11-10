@@ -5,11 +5,11 @@ import { FaUserLock } from 'react-icons/fa';
 import { PhotoProvider, PhotoView } from 'react-photo-view';
 import 'react-photo-view/dist/react-photo-view.css';
 import { Link, useLoaderData } from 'react-router-dom';
+import { CircleLoader } from 'react-spinners';
 import { toast } from 'react-toastify';
 import SingleReview from '../../Components/SingleReview/SingleReview';
 import { AuthContext } from '../../Contexts/AuthProvider/AuthProvider';
 import useTitle from '../../Hooks/useTitle/useTitle';
-import { CircleLoader } from 'react-spinners';
 
 const ServiceInformation = () => {
 	useTitle('Service Information');
@@ -28,7 +28,7 @@ const ServiceInformation = () => {
 		try {
 			const loadReviewsByService = async () => {
 				const response = await axios.get(
-					`http://localhost:5000/servicesReview/${_id}`
+					`https://flawless-visa-server.vercel.app/servicesReview/${_id}`
 				);
 				// console.log(response);
 				setReviews(response.data);
@@ -53,7 +53,7 @@ const ServiceInformation = () => {
 				createdAt: new Date(),
 			};
 			const response = await axios.post(
-				`http://localhost:5000/reviews/${_id}`,
+				`https://flawless-visa-server.vercel.app/reviews/${_id}`,
 				reviewDetails
 			);
 			console.log(response);

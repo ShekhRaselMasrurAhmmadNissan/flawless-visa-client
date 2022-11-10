@@ -19,7 +19,7 @@ const UpdateReviews = () => {
 		console.log(data);
 		try {
 			const response = await axios.patch(
-				`http://localhost:5000/updateReview/${_id}`,
+				`https://flawless-visa-server.vercel.app/updateReview/${_id}`,
 				{ message: data.review },
 				{
 					headers: {

@@ -2,7 +2,9 @@ import axios from 'axios';
 
 export const loadAllServices = async () => {
 	try {
-		const response = await axios.get(`http://localhost:5000/services`);
+		const response = await axios.get(
+			`https://flawless-visa-server.vercel.app/services`
+		);
 		return response.data;
 	} catch (error) {
 		console.error(error.message, error.name, error.stack);
@@ -12,7 +14,7 @@ export const loadAllServices = async () => {
 export const getSingleServiceInformation = async (id) => {
 	try {
 		const response = await axios.get(
-			`http://localhost:5000/services/${id}`
+			`https://flawless-visa-server.vercel.app/services/${id}`
 		);
 		return response.data;
 	} catch (error) {
@@ -24,7 +26,7 @@ export const loadSingleReviewForUpdate = async (id) => {
 	try {
 		console.log(id);
 		const response = await axios.get(
-			`http://localhost:5000/singleReview/${id}`,
+			`https://flawless-visa-server.vercel.app/singleReview/${id}`,
 			{
 				headers: {
 					authorization: `Bearer ${localStorage.getItem(

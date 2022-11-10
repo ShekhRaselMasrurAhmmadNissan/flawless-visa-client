@@ -1,8 +1,8 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import SingleService from '../SingleService/SingleService';
 import { CircleLoader } from 'react-spinners';
+import SingleService from '../SingleService/SingleService';
 
 const HighLight = () => {
 	const [services, setServices] = useState([]);
@@ -11,7 +11,7 @@ const HighLight = () => {
 	useEffect(() => {
 		const loadHighlightServices = async () => {
 			const response = await axios.get(
-				`http://localhost:5000/services?limit=3`
+				`https://flawless-visa-server.vercel.app/services?limit=3`
 			);
 			// console.log(response);
 			setServices(response.data);

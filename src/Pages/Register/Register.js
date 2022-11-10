@@ -27,7 +27,7 @@ const Register = () => {
 
 			const currentUser = { email: user.email };
 			const tokenResponse = await axios.post(
-				`http://localhost:5000/jwt`,
+				`https://flawless-visa-server.vercel.app/jwt`,
 				currentUser
 			);
 			console.log(tokenResponse.data);
