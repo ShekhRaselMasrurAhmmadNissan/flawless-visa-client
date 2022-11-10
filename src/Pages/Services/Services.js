@@ -1,11 +1,20 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import SingleService from '../../Components/SingleService/SingleService';
+import Spinner from '../../Components/Spinner/Spinner';
 import useTitle from '../../Hooks/useTitle/useTitle';
 
 const Services = () => {
-	useTitle('Services')
+	const [loader, setLoader] = useState(true);
+	useTitle('Services');
 	const services = useLoaderData();
+	useEffect(() => {
+		setLoader(false);
+	}, [services]);
+
+	if (loader) {
+		return <Spinner />;
+	}
 
 	return (
 		<div className="mt-4">

@@ -2,10 +2,12 @@ import axios from 'axios';
 import React, { useContext, useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 import SinglePersonalReview from '../../Components/SinglePersonalReview/SinglePersonalReview';
+import Spinner from '../../Components/Spinner/Spinner';
 import { AuthContext } from '../../Contexts/AuthProvider/AuthProvider';
 import useTitle from '../../Hooks/useTitle/useTitle';
 
 const MyReviews = () => {
+	const [loader, setLoader] = useState(true);
 	useTitle('My Reviews');
 	const { user, logout } = useContext(AuthContext);
 	const [reviews, setReviews] = useState([]);
@@ -25,6 +27,7 @@ const MyReviews = () => {
 					}
 				);
 				setReviews(response.data);
+				setLoader(false);
 			} catch (error) {
 				console.error(error);
 				toast.error('Unauthorized Access.');
@@ -35,6 +38,10 @@ const MyReviews = () => {
 		};
 		loadReviews();
 	}, [user?.email, logout, hasUpdate]);
+
+	if (loader) {
+		return <Spinner />;
+	}
 
 	return (
 		<div className="mt-8 lg:min-h-[415px]">

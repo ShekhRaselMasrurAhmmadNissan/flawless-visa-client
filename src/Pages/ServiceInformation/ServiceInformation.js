@@ -9,10 +9,12 @@ import { toast } from 'react-toastify';
 import SingleReview from '../../Components/SingleReview/SingleReview';
 import { AuthContext } from '../../Contexts/AuthProvider/AuthProvider';
 import useTitle from '../../Hooks/useTitle/useTitle';
+import { CircleLoader } from 'react-spinners';
 
 const ServiceInformation = () => {
-	useTitle('Service Information')
-	
+	useTitle('Service Information');
+	const [loader, setLoader] = useState(true);
+
 	const [reviews, setReviews] = useState([]);
 	const [hasUpdate, setHasUpdate] = useState(true);
 	const { user } = useContext(AuthContext);
@@ -30,6 +32,7 @@ const ServiceInformation = () => {
 				);
 				// console.log(response);
 				setReviews(response.data);
+				setLoader(false);
 			};
 			loadReviewsByService();
 		} catch (error) {
@@ -137,9 +140,17 @@ const ServiceInformation = () => {
 					</div>
 				)}
 				<div className="mt-4">
-					{reviews.map((review) => (
-						<SingleReview key={review._id} review={review} />
-					))}
+					{loader ? (
+						<CircleLoader
+							color="#0cc5a0"
+							size={100}
+							className="mx-auto lg:mt-40"
+						/>
+					) : (
+						reviews.map((review) => (
+							<SingleReview key={review._id} review={review} />
+						))
+					)}
 				</div>
 			</div>
 		</div>
