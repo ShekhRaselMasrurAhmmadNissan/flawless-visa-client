@@ -127,7 +127,7 @@ const ServiceInformation = () => {
 								id="review"
 								{...register('review')}
 								placeholder="Please write your review here..."
-								className="w-full rounded-md outline-none p-2 border-2 border-blue-600 focus:border-green-500 text-black text-lg"
+								className="w-full rounded-md outline-none p-2 border-2 border-blue-600 focus:border-green-500 text-black text-lg" required
 							></textarea>
 							<div className="text-center">
 								<button

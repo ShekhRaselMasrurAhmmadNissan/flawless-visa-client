@@ -50,7 +50,7 @@ const AddService = () => {
 							{...register('title')}
 							id="serviceName"
 							placeholder="Service Name"
-							className="w-full px-4 py-3 rounded-md border-gray-300 bg-gray-50 text-gray-800 focus:border-blue-600 outline-none"
+							className="w-full px-4 py-3 rounded-md border-gray-300 bg-gray-50 text-gray-800 focus:border-blue-600 outline-none" required
 						/>
 					</div>
 					<div className="space-y-1 text-sm">
@@ -65,7 +65,7 @@ const AddService = () => {
 							{...register('image')}
 							id="picture"
 							placeholder="Photo URL"
-							className="w-full px-4 py-3 rounded-md border-gray-300 bg-gray-50 text-gray-800 focus:border-blue-600 outline-none"
+							className="w-full px-4 py-3 rounded-md border-gray-300 bg-gray-50 text-gray-800 focus:border-blue-600 outline-none" required
 						/>
 					</div>
 					<div className="space-y-1 text-sm">
@@ -77,7 +77,7 @@ const AddService = () => {
 							{...register('price')}
 							id="price"
 							placeholder="Price"
-							className="w-full px-4 py-3 rounded-md border-gray-300 bg-gray-50 text-gray-800 focus:border-blue-600 outline-none"
+							className="w-full px-4 py-3 rounded-md border-gray-300 bg-gray-50 text-gray-800 focus:border-blue-600 outline-none" required
 						/>
 					</div>
 					<div className="space-y-1 text-sm">
@@ -91,7 +91,7 @@ const AddService = () => {
 							id="description"
 							{...register('description')}
 							placeholder="Description"
-							className="w-full px-4 py-3 rounded-md border-gray-300 bg-gray-50 text-gray-800 focus:border-blue-600 outline-none"
+							className="w-full px-4 py-3 rounded-md border-gray-300 bg-gray-50 text-gray-800 focus:border-blue-600 outline-none" required
 						></textarea>
 					</div>
 					<button
