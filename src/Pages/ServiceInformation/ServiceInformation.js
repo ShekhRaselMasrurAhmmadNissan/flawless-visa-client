@@ -76,7 +76,7 @@ const ServiceInformation = () => {
 									<img
 										src={image}
 										alt=""
-										className="block object-cover object-center w-full rounded-md h-96 bg-gray-500"
+										className="block object-cover object-center w-full rounded-md md:h-96 bg-gray-500"
 									/>
 								</PhotoView>
 							</PhotoProvider>
@@ -97,7 +97,7 @@ const ServiceInformation = () => {
 			</div>
 			<div id="reviews" className="mx-4">
 				{!user ? (
-					<div className="flex items-center justify-center text-lg text-red-500 bg-yellow-200 py-2 rounded-full">
+					<div className="flex items-center justify-center text-lg text-red-500 bg-yellow-200 py-2 rounded-full mt-8 md:mt-0 p-3 md:p-0">
 						<FaUserLock />
 						<p className="ml-3">
 							Please Login to Give Review.{' '}

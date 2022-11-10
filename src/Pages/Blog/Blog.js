@@ -2,7 +2,7 @@ import React from 'react';
 
 const Blog = () => {
 	return (
-		<div className="mt-8 lg:min-h-[420px]">
+		<div className="mt-8 md:min-h-[660px] lg:min-h-[420px]">
 			<div className="flex flex-col divide-y px-8 lg:px-12 xl:px-32 divide-gray-300">
 				<details>
 					<summary className="py-2 outline-none cursor-pointer text-xl font-medium text-blue-600">

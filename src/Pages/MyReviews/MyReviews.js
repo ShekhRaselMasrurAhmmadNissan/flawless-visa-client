@@ -44,11 +44,11 @@ const MyReviews = () => {
 	}
 
 	return (
-		<div className="mt-8 lg:min-h-[415px]">
+		<div className="mt-8 min-h-[328px] lg:min-h-[415px]">
 			<h1 className="text-4xl text-blue-600 font-medium text-center">
 				Your Reviews
 			</h1>
-			<div className="lg:min-h-[377px] w-full md:flex md:items-center justify-center">
+			<div className="min-h-[290px] lg:min-h-[377px] w-full flex flex-col md:flex-row items-center justify-center">
 				{reviews.length === 0 ? (
 					<>
 						<div className="text-center">

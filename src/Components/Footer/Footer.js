@@ -6,7 +6,7 @@ const Footer = () => {
 	return (
 		<>
 			<footer className="bg-black text-gray-900 mt-12 md:px-10">
-				<div className="container flex flex-col p-4 mx-auto md:p-8 lg:flex-row lg:justify-between divide-gray-600">
+				<div className="container flex flex-col items-center p-4 mx-auto md:p-8 lg:flex-row lg:justify-between divide-gray-600">
 					<Link
 						to="/"
 						className="text-4xl font-medium text-emerald-500"

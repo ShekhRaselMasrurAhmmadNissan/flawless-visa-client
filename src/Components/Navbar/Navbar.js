@@ -12,6 +12,7 @@ const Navbar = () => {
 	const handleLogout = async () => {
 		try {
 			const response = await logout();
+			setIsMenuOpen(false);
 			toast.success('Logout Successful.');
 		} catch (error) {
 			console.error(error);
@@ -29,6 +30,9 @@ const Navbar = () => {
 							? 'font-medium tracking-wide transition-colors duration-200 text-teal-400'
 							: 'font-medium tracking-wide text-white transition-colors duration-200 hover:text-teal-400'
 					}
+					onClick={() => {
+						setIsMenuOpen(false);
+					}}
 				>
 					Home
 				</NavLink>
@@ -42,6 +46,9 @@ const Navbar = () => {
 							? 'font-medium tracking-wide transition-colors duration-200 text-teal-400'
 							: 'font-medium tracking-wide text-white transition-colors duration-200 hover:text-teal-400'
 					}
+					onClick={() => {
+						setIsMenuOpen(false);
+					}}
 				>
 					Services
 				</NavLink>
@@ -55,6 +62,9 @@ const Navbar = () => {
 							? 'font-medium tracking-wide transition-colors duration-200 text-teal-400'
 							: 'font-medium tracking-wide text-white transition-colors duration-200 hover:text-teal-400'
 					}
+					onClick={() => {
+						setIsMenuOpen(false);
+					}}
 				>
 					Blog
 				</NavLink>
@@ -70,6 +80,9 @@ const Navbar = () => {
 									? 'font-medium tracking-wide transition-colors duration-200 text-teal-400'
 									: 'font-medium tracking-wide text-white transition-colors duration-200 hover:text-teal-400'
 							}
+							onClick={() => {
+								setIsMenuOpen(false);
+							}}
 						>
 							Add Service
 						</NavLink>
@@ -84,6 +97,9 @@ const Navbar = () => {
 									? 'font-medium tracking-wide transition-colors duration-200 text-teal-400'
 									: 'font-medium tracking-wide text-white transition-colors duration-200 hover:text-teal-400'
 							}
+							onClick={() => {
+								setIsMenuOpen(false);
+							}}
 						>
 							My Reviews
 						</NavLink>
@@ -98,7 +114,7 @@ const Navbar = () => {
 							Logout
 						</button>
 					</li>
-					<li>
+					<li className="flex items-center">
 						{user?.photoURL ? (
 							<img
 								src={user?.photoURL}
@@ -112,6 +128,9 @@ const Navbar = () => {
 								className="h-12 w-12 rounded-full object-center"
 							/>
 						)}
+						<p className="lg:hidden text-white text-lg ml-3">
+							{user?.displayName}
+						</p>
 					</li>
 				</>
 			) : (
@@ -125,6 +144,9 @@ const Navbar = () => {
 									? 'font-medium tracking-wide transition-colors duration-200 text-teal-400'
 									: 'font-medium tracking-wide text-white transition-colors duration-200 hover:text-teal-400'
 							}
+							onClick={() => {
+								setIsMenuOpen(false);
+							}}
 						>
 							Login
 						</NavLink>
@@ -138,6 +160,9 @@ const Navbar = () => {
 									? 'font-medium tracking-wide transition-colors duration-200 text-teal-400'
 									: 'font-medium tracking-wide text-white transition-colors duration-200 hover:text-teal-400'
 							}
+							onClick={() => {
+								setIsMenuOpen(false);
+							}}
 						>
 							Sign Up
 						</NavLink>
@@ -187,56 +212,9 @@ const Navbar = () => {
 							</svg>
 						</button>
 						{isMenuOpen && (
-							<div className="absolute top-0 left-0 w-full">
-								<div className="p-5 bg-white border rounded shadow-sm">
+							<div className="absolute top-0 left-0 w-full bg-gray-600 z-20">
+								<div className="p-5 bg-gray-600 border rounded shadow-sm">
 									<div className="flex items-center justify-between mb-4">
-										<div>
-											<a
-												href="/"
-												aria-label="Company"
-												title="Company"
-												className="inline-flex items-center"
-											>
-												<svg
-													className="w-8 text-deep-purple-accent-400"
-													viewBox="0 0 24 24"
-													strokeLinejoin="round"
-													strokeWidth="2"
-													strokeLinecap="round"
-													strokeMiterlimit="10"
-													stroke="currentColor"
-													fill="none"
-												>
-													<rect
-														x="3"
-														y="1"
-														width="7"
-														height="12"
-													/>
-													<rect
-														x="3"
-														y="17"
-														width="7"
-														height="6"
-													/>
-													<rect
-														x="14"
-														y="1"
-														width="7"
-														height="6"
-													/>
-													<rect
-														x="14"
-														y="11"
-														width="7"
-														height="12"
-													/>
-												</svg>
-												<span className="ml-2 text-xl font-bold tracking-wide text-gray-800 uppercase">
-													Company
-												</span>
-											</a>
-										</div>
 										<div>
 											<button
 												aria-label="Close Menu"
@@ -247,7 +225,7 @@ const Navbar = () => {
 												}
 											>
 												<svg
-													className="w-5 text-gray-600"
+													className="w-5 text-white"
 													viewBox="0 0 24 24"
 												>
 													<path
@@ -259,7 +237,7 @@ const Navbar = () => {
 										</div>
 									</div>
 									<nav>
-										<ul className="space-y-4">
+										<ul className="space-y-4 bg-gray-600 px-6 py-3">
 											{navItems}
 										</ul>
 									</nav>
