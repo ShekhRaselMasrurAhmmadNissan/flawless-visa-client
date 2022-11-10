@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
@@ -6,8 +7,8 @@ import { AuthContext } from '../../Contexts/AuthProvider/AuthProvider';
 import useTitle from '../../Hooks/useTitle/useTitle';
 
 const Register = () => {
-	useTitle('Register')
-	
+	useTitle('Register');
+
 	const [error, setError] = useState('');
 	const { emailRegister, userUpdate } = useContext(AuthContext);
 	const { register, handleSubmit } = useForm();
@@ -23,7 +24,18 @@ const Register = () => {
 			const response = await emailRegister(data.email, data.password);
 			const user = response.user;
 			const updateHandle = await userUpdate(updatedUser);
-			console.log(user);
+
+			const currentUser = { email: user.email };
+			const tokenResponse = await axios.post(
+				`http://localhost:5000/jwt`,
+				currentUser
+			);
+			console.log(tokenResponse.data);
+			localStorage.setItem(
+				'flawless-visa-token',
+				tokenResponse.data.token
+			);
+
 			navigate('/home');
 		} catch (error) {
 			console.error(error);

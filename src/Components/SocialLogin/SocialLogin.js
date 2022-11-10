@@ -1,3 +1,4 @@
+import axios from 'axios';
 import { GoogleAuthProvider } from 'firebase/auth';
 import React, { useContext } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
@@ -13,7 +14,17 @@ const SocialLogin = () => {
 	const handleGoogleSignIn = async () => {
 		try {
 			const response = await providerSignIn(googleProvider);
-			console.log(response.user);
+			// console.log(response.user);
+			const currentUser = { email: response.user.email };
+			const tokenResponse = await axios.post(
+				`http://localhost:5000/jwt`,
+				currentUser
+			);
+			console.log(tokenResponse.data);
+			localStorage.setItem(
+				'flawless-visa-token',
+				tokenResponse.data.token
+			);
 			navigate(from, { replace: true });
 		} catch (error) {
 			console.error(error);
