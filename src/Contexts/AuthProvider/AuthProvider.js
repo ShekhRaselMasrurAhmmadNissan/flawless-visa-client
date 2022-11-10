@@ -33,6 +33,7 @@ const AuthProvider = ({ children }) => {
 	};
 
 	const logout = () => {
+		localStorage.removeItem('flawless-visa-token');
 		setLoading(true);
 		return signOut(auth);
 	};

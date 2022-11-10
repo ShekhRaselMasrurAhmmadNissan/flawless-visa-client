@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
@@ -16,7 +17,17 @@ const Login = () => {
 		console.log(data);
 		try {
 			const response = await login(data.email, data.password);
-			console.log(response);
+			console.log(response.user);
+			const currentUser = { email: response.user.email };
+			const tokenResponse = await axios.post(
+				`http://localhost:5000/jwt`,
+				currentUser
+			);
+			console.log(tokenResponse.data);
+			localStorage.setItem(
+				'flawless-visa-token',
+				tokenResponse.data.token
+			);
 			navigate(from, { replace: true });
 		} catch (error) {
 			console.error(error);

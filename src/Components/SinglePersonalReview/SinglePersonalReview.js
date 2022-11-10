@@ -1,8 +1,34 @@
+import axios from 'axios';
 import React from 'react';
 import { FaEdit, FaTrash } from 'react-icons/fa';
 
-const SinglePersonalReview = ({ review }) => {
+const SinglePersonalReview = ({ review, hasUpdate, setHasUpdate }) => {
 	const { _id, serviceName, message } = review;
+	const handleDelete = async () => {
+		try {
+			const decision = window.confirm(
+				`Are You sure to delete the review of ${serviceName}?`
+			);
+			if (decision) {
+				const response = await axios.delete(
+					`http://localhost:5000/reviews/${_id}`,
+					{
+						headers: {
+							authorization: `Bearer ${localStorage.getItem(
+								'flawless-visa-token'
+							)}`,
+						},
+					}
+				);
+				if (response.data.deletedCount > 0) {
+					alert('Deleted Successfully.');
+					setHasUpdate(!hasUpdate);
+				}
+			}
+		} catch (error) {
+			console.error(error);
+		}
+	};
 	return (
 		<div className="md:grid md:grid-cols-5 lg:grid-cols-7 md:w-3/5 mx-auto my-3 border-2 border-green-400 p-4 md:divide-x-2 rounded-lg">
 			<div className="md:col-span-3 lg:col-span-5">
@@ -15,7 +41,10 @@ const SinglePersonalReview = ({ review }) => {
 				<button className="text-white px-3 py-2 bg-purple-500 rounded-full text-2xl">
 					<FaEdit />
 				</button>
-				<button className="text-white px-3 py-2 bg-red-600 rounded-full text-2xl ml-6">
+				<button
+					className="text-white px-3 py-2 bg-red-600 rounded-full text-2xl ml-6"
+					onClick={handleDelete}
+				>
 					<FaTrash />
 				</button>
 			</div>

@@ -4,15 +4,26 @@ import SinglePersonalReview from '../../Components/SinglePersonalReview/SinglePe
 import { AuthContext } from '../../Contexts/AuthProvider/AuthProvider';
 
 const MyReviews = () => {
-	const { user } = useContext(AuthContext);
+	const { user, logout } = useContext(AuthContext);
 	const [reviews, setReviews] = useState([]);
+	const [hasUpdate, setHasUpdate] = useState(true);
 
 	useEffect(() => {
 		const loadReviews = async () => {
 			try {
 				const response = await axios.get(
-					`http://localhost:5000/userReviews?email=${user?.email}`
+					`http://localhost:5000/userReviews?email=${user?.email}`,
+					{
+						headers: {
+							authorization: `Bearer ${localStorage.getItem(
+								'flawless-visa-token'
+							)}`,
+						},
+					}
 				);
+				if (response.status === 401 || response.status === 403) {
+					return logout.then().catch((error) => console.error(error));
+				}
 				setReviews(response.data);
 				console.log(response.data);
 			} catch (error) {
@@ -20,7 +31,7 @@ const MyReviews = () => {
 			}
 		};
 		loadReviews();
-	}, [user?.email]);
+	}, [user?.email, logout, hasUpdate]);
 
 	return (
 		<div className="mt-8 lg:min-h-[415px]">
@@ -42,6 +53,8 @@ const MyReviews = () => {
 							<SinglePersonalReview
 								key={review._id}
 								review={review}
+								hasUpdate={hasUpdate}
+								setHasUpdate={setHasUpdate}
 							/>
 						))}
 					</div>
