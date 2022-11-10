@@ -3,8 +3,11 @@ import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import { useLoaderData, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Contexts/AuthProvider/AuthProvider';
+import useTitle from '../../Hooks/useTitle/useTitle';
 
 const UpdateReviews = () => {
+	useTitle('Update Review');
+
 	const { logout } = useContext(AuthContext);
 	const review = useLoaderData();
 	const navigate = useNavigate();

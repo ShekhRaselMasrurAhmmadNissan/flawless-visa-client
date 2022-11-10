@@ -3,8 +3,11 @@ import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
 import SocialLogin from '../../Components/SocialLogin/SocialLogin';
 import { AuthContext } from '../../Contexts/AuthProvider/AuthProvider';
+import useTitle from '../../Hooks/useTitle/useTitle';
 
 const Register = () => {
+	useTitle('Register')
+	
 	const [error, setError] = useState('');
 	const { emailRegister, userUpdate } = useContext(AuthContext);
 	const { register, handleSubmit } = useForm();

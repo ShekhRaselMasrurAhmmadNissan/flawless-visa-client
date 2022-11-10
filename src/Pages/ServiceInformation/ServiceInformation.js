@@ -7,8 +7,11 @@ import 'react-photo-view/dist/react-photo-view.css';
 import { Link, useLoaderData } from 'react-router-dom';
 import SingleReview from '../../Components/SingleReview/SingleReview';
 import { AuthContext } from '../../Contexts/AuthProvider/AuthProvider';
+import useTitle from '../../Hooks/useTitle/useTitle';
 
 const ServiceInformation = () => {
+	useTitle('Service Information')
+	
 	const [reviews, setReviews] = useState([]);
 	const [hasUpdate, setHasUpdate] = useState(true);
 	const { user } = useContext(AuthContext);

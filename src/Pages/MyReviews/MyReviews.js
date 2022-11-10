@@ -2,8 +2,10 @@ import axios from 'axios';
 import React, { useContext, useEffect, useState } from 'react';
 import SinglePersonalReview from '../../Components/SinglePersonalReview/SinglePersonalReview';
 import { AuthContext } from '../../Contexts/AuthProvider/AuthProvider';
+import useTitle from '../../Hooks/useTitle/useTitle';
 
 const MyReviews = () => {
+	useTitle('My Reviews');
 	const { user, logout } = useContext(AuthContext);
 	const [reviews, setReviews] = useState([]);
 	const [hasUpdate, setHasUpdate] = useState(true);

@@ -4,8 +4,11 @@ import { useForm } from 'react-hook-form';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import SocialLogin from '../../Components/SocialLogin/SocialLogin';
 import { AuthContext } from '../../Contexts/AuthProvider/AuthProvider';
+import useTitle from '../../Hooks/useTitle/useTitle';
 
 const Login = () => {
+	useTitle('Login')
+	
 	const [error, setError] = useState('');
 	const { login } = useContext(AuthContext);
 	const { register, handleSubmit } = useForm();
