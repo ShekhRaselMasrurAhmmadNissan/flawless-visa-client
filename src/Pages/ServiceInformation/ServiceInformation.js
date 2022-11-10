@@ -27,6 +27,7 @@ const ServiceInformation = () => {
 	useEffect(() => {
 		try {
 			const loadReviewsByService = async () => {
+				setLoader(true)
 				const response = await axios.get(
 					`https://flawless-visa-server.vercel.app/servicesReview/${_id}`
 				);

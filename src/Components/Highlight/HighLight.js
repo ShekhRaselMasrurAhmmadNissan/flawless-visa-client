@@ -10,6 +10,7 @@ const HighLight = () => {
 
 	useEffect(() => {
 		const loadHighlightServices = async () => {
+			setLoader(true)
 			const response = await axios.get(
 				`https://flawless-visa-server.vercel.app/services?limit=3`
 			);

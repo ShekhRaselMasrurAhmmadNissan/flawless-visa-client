@@ -16,6 +16,7 @@ const MyReviews = () => {
 	useEffect(() => {
 		const loadReviews = async () => {
 			try {
+				setLoader(true);
 				const response = await axios.get(
 					`https://flawless-visa-server.vercel.app/userReviews?email=${user?.email}`,
 					{

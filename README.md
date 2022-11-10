@@ -46,5 +46,5 @@ This project was created using CRA and the packages was installed by using [npm]
 [npm]: https://www.npmjs.com/
 [tailwind css]: https://tailwindcss.com/
 [react toastify]: https://www.npmjs.com/package/react-toastify
-[flawless visa]: https://education-expo.web.app
-[click here]: https://education-expo.web.app
+[flawless visa]: https://flawless-visa.web.app/
+[click here]: https://flawless-visa.web.app/
