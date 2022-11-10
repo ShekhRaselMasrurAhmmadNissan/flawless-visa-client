@@ -46,6 +46,19 @@ const Navbar = () => {
 					Services
 				</NavLink>
 			</li>
+			<li>
+				<NavLink
+					to="blog"
+					title="Blog"
+					className={({ isActive }) =>
+						isActive
+							? 'font-medium tracking-wide transition-colors duration-200 text-teal-400'
+							: 'font-medium tracking-wide text-white transition-colors duration-200 hover:text-teal-400'
+					}
+				>
+					Blog
+				</NavLink>
+			</li>
 			{user ? (
 				<>
 					<li>
